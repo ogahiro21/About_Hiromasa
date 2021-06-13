@@ -1,0 +1,15 @@
+name: code_check
+on: push
+env:
+  FONTAWESOME_AUTH_TOKEN: ${{ secrets.FONTAWESOME_AUTH_TOKEN }}
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: sed -i -e "s/FONTAWESOME_AUTH_TOKEN/$FONTAWESOME_AUTH_TOKEN/" .npmrc
+      - run: yarn
+      - run: yarn type-check
+      - run: yarn lint
+      - run: yarn format

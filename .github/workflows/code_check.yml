@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: touch .npmrc
-      - run: sed -i -e "s/FONTAWESOME_AUTH_TOKEN/$FONTAWESOME_AUTH_TOKEN/" .npmrc
+      - run: $FONTAWESOME_AUTH_TOKEN > .npmrc
       - run: yarn
       - run: yarn type-check
       - run: yarn lint

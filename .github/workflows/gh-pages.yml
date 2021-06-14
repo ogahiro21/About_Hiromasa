@@ -32,7 +32,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: env set
-        run: touch .npmrc && $FONTAWESOME_AUTH_TOKEN > .npmrc
+        run: touch .npmrc && echo $FONTAWESOME_AUTH_TOKEN > .npmrc
 
       # package.jsonに基づき依存パッケージをインストールする
       - name: install
